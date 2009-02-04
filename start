@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo wifi
+case "$1" in
+	external | clone ) sudo .config/screen/screen_$1.sh ;;
+	*) sudo .config/screen/screen_single.sh ;;
+esac
+startx

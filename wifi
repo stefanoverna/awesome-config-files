@@ -1,0 +1,8 @@
+#!/bin/bash
+ifconfig wlan0 up
+killall dhcpcd
+zyxel=$(iwlist wlan0 scanning | grep -c ZyXEL)
+if [ -n "$zyxel"  ]; then
+	iwconfig wlan0 essid ZyXEL
+	dhcpcd wlan0
+fi

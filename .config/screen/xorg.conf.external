@@ -1,0 +1,112 @@
+Section "ServerLayout"
+	Identifier     "Simple Layout"
+	Screen      0  "aticonfig-Screen[0]" 0 0
+	InputDevice    "Keyboard1" "CoreKeyboard"
+	InputDevice    "Synaptics Touchpad" "CorePointer"
+EndSection
+
+Section "Files"
+	FontPath     "/usr/share/fonts/misc"
+	FontPath     "/usr/share/fonts/75dpi"
+	FontPath     "/usr/share/fonts/100dpi"
+	FontPath     "/usr/share/fonts/Type1"
+	FontPath     "/usr/share/fonts/TTF"
+EndSection
+
+Section "Module"
+	Load  "freetype"
+	Load  "xtt"
+	Load  "dbe"  	# Double buffer extension
+	SubSection "extmod"
+		Option	    "omit xfree86-dga"   # don't initialise the DGA extension
+	EndSubSection
+EndSection
+
+Section "ServerFlags"
+	Option	    "AutoAddDevices" "false"
+EndSection
+
+Section "InputDevice"
+	Identifier  "Keyboard1"
+	Driver      "kbd"
+	Option	    "AutoRepeat" "500 30"
+	Option	    "XkbRules" "xorg"
+	Option	    "XkbModel" "pc105"
+	Option	    "XkbLayout" "it"
+	Option	    "XkbOptions" "lv3:rwin_switch"
+EndSection
+
+Section "InputDevice"
+
+	# Option "RBCornerButton" "2"
+	# Option "LTCornerButton" "0"
+	# Option "LBCornerButton" "3"
+	Identifier  "Synaptics Touchpad"
+	Driver      "synaptics"
+	Option	    "SendCoreEvents" "true"
+	Option	    "Device" "/dev/input/mice"
+	Option	    "Protocol" "auto-dev"
+	Option	    "SHMConfig" "true"
+	Option	    "LeftEdge" "10"
+	Option	    "RightEdge" "1200"
+	Option	    "TopEdge" "10"
+	Option	    "BottomEdge" "370"
+	Option	    "FingerLow" "10"
+	Option	    "FingerHigh" "20"
+	Option	    "MaxTapTime" "180"
+	Option	    "MaxTapMove" "220"
+	Option	    "SingleTapTimeout" "100"
+	Option	    "MaxDoubleTapTime" "180"
+	Option	    "LockedDrags" "off"
+	Option	    "MinSpeed" "1.10"
+	Option	    "MaxSpeed" "1.30"
+	Option	    "AccelFactor" "0.08"
+	Option	    "TapButton1" "1" # tap con un dito = click sinistro
+	Option	    "TapButton2" "3" # tap con due dita = click destro
+	Option	    "TapButton3" "2" # tap con tre dita = click centrale
+	Option	    "Emulate3Buttons" "true"
+	# Option "RTCornerButton" "0" # parte commentata per i tap negli angoli...
+	Option	    "VertScrollDelta" "20"
+	Option	    "HorizScrollDelta" "50"
+	Option	    "HorizEdgeScroll" "0"
+	Option	    "VertEdgeScroll" "0"
+	Option	    "VertTwoFingerScroll" "1" # scroll verticale con due dita
+	Option	    "HorizTwoFingerScroll" "1" # scroll orizzontale con due dita
+EndSection
+
+Section "Monitor"
+	Identifier   "aticonfig-Monitor[0]"
+	HorizSync    30.0 - 93.0
+	VertRefresh  56.0 - 76.0
+	Option	    "VendorName" "ATI Proprietary Driver"
+	Option	    "ModelName" "Generic Autodetecting Monitor"
+	Option	    "DPMS" "true"
+EndSection
+
+Section "Device"
+	Identifier  "aticonfig-Device[0]"
+	Driver      "fglrx"
+	Option	    "DesktopSetup" "single"
+	Option	    "EnableMonitor" "crt2"
+	Option      "Mode" "1680x1050"
+	Option	    "HSync" "30-93"
+	Option	    "VRefresh" "56-76"
+	BusID       "PCI:1:0:0"
+EndSection
+
+Section "Screen"
+	Identifier "aticonfig-Screen[0]"
+	Device     "aticonfig-Device[0]"
+	Monitor    "aticonfig-Monitor[0]"
+	DefaultDepth     24
+	SubSection "Display"
+		Viewport   0 0
+		Depth     24
+		Modes    "1680x1050"
+	EndSubSection
+EndSection
+
+Section "DRI"
+	Mode         0666
+EndSection
+

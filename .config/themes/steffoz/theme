@@ -1,0 +1,41 @@
+font          = Monaco 7
+
+bg_normal     = #222222
+bg_focus      = #535d6c
+bg_urgent     = #ff0000
+
+fg_normal     = #aaaaaa
+fg_focus      = #ffffff
+fg_urgent     = #ffffff
+
+border_width  = 1
+border_normal = #000000
+border_focus  = #535d6c
+border_marked = #91231c
+
+taglist_squares_sel = /home/steffoz/.config/themes/steffoz/taglist/squarefw.png
+taglist_squares_unsel = /home/steffoz/.config/themes/steffoz/taglist/squarew.png
+tasklist_floating_icon = /home/steffoz/.config/themes/steffoz/tasklist/floatingw.png
+
+menu_submenu_icon = /home/steffoz/.config/themes/steffoz/submenu.png
+menu_height   = 15
+menu_width    = 100
+
+titlebar_close_button_normal = /home/steffoz/.config/themes/steffoz/titlebar/close.png
+titlebar_close_button_focus = /home/steffoz/.config/themes/steffoz/titlebar/closer.png
+
+wallpaper_cmd = awsetbg -r /home/steffoz/.config/themes/wps/
+
+layout_dwindle = /home/steffoz/.config/themes/steffoz/layouts/dwindlew.png
+layout_fairh = /home/steffoz/.config/themes/steffoz/layouts/fairhw.png
+layout_fairv = /home/steffoz/.config/themes/steffoz/layouts/fairvw.png
+layout_floating = /home/steffoz/.config/themes/steffoz/layouts/floatingw.png
+layout_magnifier = /home/steffoz/.config/themes/steffoz/layouts/magnifierw.png
+layout_max = /home/steffoz/.config/themes/steffoz/layouts/maxw.png
+layout_spiral = /home/steffoz/.config/themes/steffoz/layouts/spiralw.png
+layout_tilebottom = /home/steffoz/.config/themes/steffoz/layouts/tilebottomw.png
+layout_tileleft = /home/steffoz/.config/themes/steffoz/layouts/tileleftw.png
+layout_tile = /home/steffoz/.config/themes/steffoz/layouts/tilew.png
+layout_tiletop = /home/steffoz/.config/themes/steffoz/layouts/tiletopw.png
+
+awesome_icon = /usr/share/awesome/icons/awesome16.png
