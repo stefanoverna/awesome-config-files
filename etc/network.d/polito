@@ -1,0 +1,8 @@
+CONNECTION="wireless"
+DESCRIPTION="Wifi Polito"
+INTERFACE=wlan0
+IP=dhcp
+ESSID=polito
+SECURITY=none
+SCAN="YES"
+TIMEOUT=10

@@ -20,6 +20,8 @@ Section "Module"
 	SubSection "extmod"
 		Option	    "omit xfree86-dga"   # don't initialise the DGA extension
 	EndSubSection
+	Load  "GLcore"
+	Load  "freetype"
 EndSection
 
 Section "ServerFlags"

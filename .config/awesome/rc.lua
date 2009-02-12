@@ -45,13 +45,14 @@ floatapps =
 apptags =
 {
 	["Gran Paradiso"] = { screen = 1, tag = 1 },
-	["sonata"] = { screen = 1, tag = 5 },
-	["pidgin"] = { screen = 1, tag = 6 },
+	["sonata"] = { screen = 1, tag = 6 },
+	["pidgin"] = { screen = 1, tag = 7 },
 	["xterm"] = { screen = 1, tag = 2 },
 	["epdfview"] = { screen = 1, tag = 4 },
 	["thunar"] = { screen = 1, tag = 3 },
 	["leafpad"] = { screen = 1, tag= 4 },
-	["gedit"] = { screen = 1, tag= 4 }
+	["gedit"] = { screen = 1, tag = 4 },
+	["Thunderbird-bin"] = { screen = 1, tag = 5 }
 }
 
 -- Define if we want to use titlebar on all applications.
@@ -65,6 +66,7 @@ tagnames = {
 "xterm",
 "ls",
 "pdf",
+"mail",
 "mpc",
 "irc"
 }
@@ -103,7 +105,6 @@ mymainmenu = awful.menu.new({
 	items = { 
 		{ "awesome", myawesomemenu, beautiful.awesome_icon },
 		{ "open terminal", terminal },
-		{ "start wifi", terminal .. " -e sudo ./home/steffoz/start_wifi.sh" },
 		{ "desktop", "thunar /home/steffoz/Desktop/" }
 	}
 })
@@ -361,7 +362,7 @@ keybinding({ modkey }, "Right", awful.tag.viewnext):add()
 keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
 
 -- Standard program
-keybinding({ modkey }, "t", function () awful.util.spawn(terminal) end):add()
+keybinding({ modkey }, "\\", function () awful.util.spawn(terminal) end):add()
 
 keybinding({ modkey, "Control" }, "r", function ()
 	mypromptbox[mouse.screen].text = awful.util.escape(awful.util.restart())
@@ -458,15 +459,19 @@ end
 -- Hook function to execute when focusing a client.
 awful.hooks.focus.register(function (c)
 	if not awful.client.ismarked(c) then
+		c.border_width = 3
 		c.border_color = beautiful.border_focus
 	end
+	c.opacity = 1.0
 end)
 
 -- Hook function to execute when unfocusing a client.
 awful.hooks.unfocus.register(function (c)
 	if not awful.client.ismarked(c) then
+		c.border = 0
 		c.border_color = beautiful.border_normal
 	end
+	c.opacity = 0.8
 end)
 
 -- Hook function to execute when marking a client
@@ -580,7 +585,7 @@ end)
 
 -- Hook called every second
 awful.hooks.timer.register(1, function ()
-	clockbox.text = " " .. os.date("%X %x", os.time() + 3600) .. " "
+	clockbox.text = " " .. os.date("%X %x", os.time() + 3600*8) .. " "
 end)
 -- }}}
 

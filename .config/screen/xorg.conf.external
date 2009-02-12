@@ -20,6 +20,10 @@ Section "Module"
 	SubSection "extmod"
 		Option	    "omit xfree86-dga"   # don't initialise the DGA extension
 	EndSubSection
+	Load  "GLcore"
+	Load  "freetype
+	Load  "GLcore"
+	Load  "freetype"
 EndSection
 
 Section "ServerFlags"
@@ -88,7 +92,7 @@ Section "Device"
 	Driver      "fglrx"
 	Option	    "DesktopSetup" "single"
 	Option	    "EnableMonitor" "crt2"
-	Option      "Mode" "1680x1050"
+	Option	    "Mode" "1680x1050"
 	Option	    "HSync" "30-93"
 	Option	    "VRefresh" "56-76"
 	BusID       "PCI:1:0:0"

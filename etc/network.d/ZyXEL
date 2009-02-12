@@ -1,0 +1,9 @@
+CONNECTION="wireless"
+DESCRIPTION="Casa wifi ZyXEL"
+INTERFACE=wlan0
+IP=dhcp
+DHCP_OPTIONS="" # Extra arguments for dhcpcd
+ESSID=ZyXEL
+SECURITY=none
+SCAN="YES"
+TIMEOUT=10

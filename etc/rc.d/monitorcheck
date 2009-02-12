@@ -1,0 +1,39 @@
+#!/bin/bash
+
+daemon_name=monitorcheck
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+get_pid() {
+       pidof $daemon_name
+}
+
+case "$1" in
+ start)
+   stat_busy "Checking external monitor presence"
+   if grep -q closed /proc/acpi/button/lid/LID0/state
+   then 
+ 	stat_busy "Lid closed, using external monitor"
+	/home/steffoz/.config/screen/screen_external.sh &> /dev/null
+   else
+	stat_busy "Lid open, using normal monitor"
+	/home/steffoz/.config/screen/screen_single.sh &> /dev/null
+   fi
+   stat_done
+   ;;
+
+ stop)
+   stat_busy "Stopping external monitor presence"
+   stat_done
+   ;;
+
+ restart)
+   $0 stop
+   sleep 1 
+   $0 start
+   ;;
+ *)
+   echo "usage: $0 {start|stop|restart}"
+esac
+exit 0
